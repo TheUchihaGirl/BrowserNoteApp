@@ -1,0 +1,56 @@
+<div class="box">
+  <form class="note-form">
+    <table class="table-layout">
+      <tr>
+        <td>
+          <mat-form-field class="title-form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" [(ngModel)]="Title" name="Title">
+            <button *ngIf="Title" matSuffix mat-icon-button aria-label="Clear" (click)="Title=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="CategorySelected" name="category">
+              <mat-option *ngFor="let category of CategoryList" [value]="category">{{category}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="subtitle-form-field">
+            <mat-label>Subtitle</mat-label>
+            <input matInput type="text" [(ngModel)]="Subtitle" name="Subtitle">
+            <button *ngIf="Subtitle" matSuffix mat-icon-button aria-label="Clear" (click)="Subtitle=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="input-form-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex. 100 Main St" [(ngModel)]="Content" name="Content"></textarea>
+            <button *ngIf="Content" matSuffix mat-icon-button aria-label="Clear" (click)="Content=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td><button mat-raised-button color="primary" (click)="createOrModifyNote()">Submit</button></td>
+        <td>  <button mat-raised-button color="warn" (click)="cancelNote()">Cancel</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
+
+
