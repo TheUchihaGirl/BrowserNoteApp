@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { UUID } from 'angular2-uuid';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardData } from 'src/model/CardData';
+import { CardData, Category } from 'src/model/CardData';
+import { CategoryService } from '../category.service';
 @Component({
   selector: 'app-createnote',
   templateUrl: './createnote.component.html',
@@ -13,7 +14,7 @@ export class CreatenoteComponent implements OnInit{
   Title?: string;
   Subtitle?: string;
   Content?: string;
-  CategoryList = ["Personal", "Shopping List", "Medicine"];
+  CategoryList : Category[]= [];
   CategorySelected: string = '';
   selectedFileName :string = '';
   selectedFile : File;
@@ -21,10 +22,12 @@ export class CreatenoteComponent implements OnInit{
 
 
   constructor(private storageService: StorageService,
-     private router: Router,
-     private activedRoute: ActivatedRoute) {
+    private categoryService : CategoryService,
+    private router: Router,
+    private activedRoute: ActivatedRoute) {
   }
   ngOnInit(): void {
+    this.CategoryList = this.categoryService.get();
     let id = this.activedRoute.snapshot.paramMap.get("id");
     if(id == null || id == undefined){
       //In create Mode

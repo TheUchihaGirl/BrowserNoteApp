@@ -12,7 +12,7 @@
     <mat-form-field appearance="fill" class="category-form-field">
       <mat-label>Category</mat-label>
       <mat-select [(ngModel)]="CategorySelected" name="category">
-        <mat-option *ngFor="let category of CategoryList" [value]="category">{{category}}</mat-option>
+        <mat-option *ngFor="let category of CategoryList" [value]="category.name">{{category.name}}</mat-option>
       </mat-select>
     </mat-form-field><br/>
 
