@@ -15,6 +15,9 @@ export class CreatenoteComponent implements OnInit{
   Content?: string;
   CategoryList = ["Personal", "Shopping List", "Medicine"];
   CategorySelected: string = '';
+  selectedFileName :string = '';
+  selectedFile : File;
+  preview : any;
 
 
   constructor(private storageService: StorageService,
@@ -67,5 +70,32 @@ export class CreatenoteComponent implements OnInit{
     this.Subtitle = '';
     this.Content = '';
     this.CategorySelected = '';
+  }
+
+  uploadFile(){
+    if (this.selectedFile) {
+      console.log(this.selectedFile.name);
+    }
+  }
+
+  selectFile(event: any):void{
+    this.selectedFileName = '';
+    this.selectedFile = event.target.files;
+  
+    if (this.selectedFile) {
+      const numberOfFiles = 1;
+      for (let i = 0; i < numberOfFiles; i++) {
+        const reader = new FileReader();
+  
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.preview = e.target.result;
+        };
+  
+        reader.readAsDataURL(this.selectedFile);
+  
+        this.selectedFileName = this.selectedFile.name;
+      }
+    }
   }
 }
