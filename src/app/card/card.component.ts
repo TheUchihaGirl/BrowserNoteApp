@@ -16,14 +16,14 @@ export class CardComponent implements OnInit{
   id?:string;
   title: string;
   subtitle: string;
-  imageUrl: string;
+  imageContent: string;
   content: string;
 
   ngOnInit(): void {
     this.id = this.card.id;
     this.subtitle = this.card.subtitle;
     this.title = this.card.title;
-    this.imageUrl = this.card.imageUrl;
+    this.imageContent = this.card.imageContent;
     this.content = this.card.content;
   }
 

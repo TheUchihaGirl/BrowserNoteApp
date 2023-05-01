@@ -17,7 +17,7 @@ export class CreatenoteComponent implements OnInit{
   CategorySelected: string = '';
   selectedFileName :string = '';
   selectedFile : File;
-  preview : any;
+  preview : string;
 
 
   constructor(private storageService: StorageService,
@@ -37,7 +37,9 @@ export class CreatenoteComponent implements OnInit{
       this.Title = noteDetails[0].title;
       this.CategorySelected = noteDetails[0].category,
       this.Subtitle = noteDetails[0].subtitle,
-      this.Content = noteDetails[0].content
+      this.Content = noteDetails[0].content,
+      this.preview = noteDetails[0].imageContent,
+      this.selectedFileName = noteDetails[0].imageName
     }
   }
 
@@ -57,7 +59,8 @@ export class CreatenoteComponent implements OnInit{
       title: this.Title,
       subtitle: this.Subtitle,
       content: this.Content,
-      imageUrl:'',
+      imageContent:this.preview,
+      imageName : this.selectedFileName,     
       category: this.CategorySelected
     }
     datalist.push(noteDetails);
@@ -70,6 +73,7 @@ export class CreatenoteComponent implements OnInit{
     this.Subtitle = '';
     this.Content = '';
     this.CategorySelected = '';
+    this.router.navigateByUrl('/dashboard');
   }
 
   uploadFile(){
@@ -80,20 +84,17 @@ export class CreatenoteComponent implements OnInit{
 
   selectFile(event: any):void{
     this.selectedFileName = '';
-    this.selectedFile = event.target.files;
+    this.selectedFile = event.target.files[0];
   
     if (this.selectedFile) {
       const numberOfFiles = 1;
       for (let i = 0; i < numberOfFiles; i++) {
-        const reader = new FileReader();
-  
+        let reader = new FileReader();
         reader.onload = (e: any) => {
           console.log(e.target.result);
           this.preview = e.target.result;
-        };
-  
-        reader.readAsDataURL(this.selectedFile);
-  
+        };  
+        reader.readAsDataURL(this.selectedFile); 
         this.selectedFileName = this.selectedFile.name;
       }
     }
