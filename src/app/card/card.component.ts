@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { cardData } from 'src/model/cardData';
+import { CardData } from 'src/model/CardData';
 import { StorageService } from '../storage.service';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class CardComponent implements OnInit{
   constructor(private storageService:StorageService, private router : Router){
   }
-  @Input() card? : cardData;
+  @Input() card? : CardData;
   @Output() deleteCard = new EventEmitter<string>();
   id?:string;
   title: string;

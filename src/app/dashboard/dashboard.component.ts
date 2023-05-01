@@ -1,7 +1,10 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { cardData } from 'src/model/cardData';
+import { CardData, Category } from 'src/model/CardData';
 import { StorageService } from '../storage.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCategoryDialogComponent } from '../create-category-dialog/create-category-dialog.component';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,29 +13,42 @@ import { StorageService } from '../storage.service';
 })
 export class DashboardComponent implements OnInit {
 
-  cardData : cardData[] = [];
-  constructor(private router : Router, private storageService : StorageService){}
+  CardData: CardData[] = [];
+  categoryDataItem: Category = {name:'',colour:'' };
+  constructor(private router: Router,
+    private storageService: StorageService,
+    private dialog: MatDialog,
+    private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.cardData = this.storageService.get();
+    this.CardData = this.storageService.get();
   }
 
-  deleteCard(deletedNoteId : string){
-    this.cardData = this.cardData.filter((cardElem)=>{
+  deleteCard(deletedNoteId: string) {
+    this.CardData = this.CardData.filter((cardElem) => {
       return cardElem.id != deletedNoteId;
     });
   }
 
-  // cardData : cardData[] = [{
-  //   title : "Shiba Inu",
-  //   subtitle : "Dog Breed",
-  //   imageUrl : "https://material.angular.io/assets/img/examples/shiba2.jpg",
-  //   content : `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-  //   A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-  //   bred for hunting.`
-  // }];
-
-  createNote(){
+  createNote() {
     this.router.navigateByUrl('/create');
+  }
+
+  openCreateCategoryDialog() {
+    const dialogRef = this.dialog.open(CreateCategoryDialogComponent, {
+      data: { name: this.categoryDataItem.name, colour: this.categoryDataItem.colour },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+
+      this.categoryDataItem = {
+        colour: result.colour,
+        name: result.name
+      }
+      let categoryDataList: Category[] = this.categoryService.get();
+      categoryDataList.push(this.categoryDataItem);
+      this.categoryService.set(categoryDataList);
+    });
   }
 }

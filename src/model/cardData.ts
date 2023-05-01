@@ -1,4 +1,4 @@
-export interface cardData{
+export interface CardData{
     id?:string,
     title : string,
     subtitle : string,
@@ -7,3 +7,8 @@ export interface cardData{
     content : string,
     category:string
 }
+
+export interface Category{
+    name : string,
+    colour : string
+  }

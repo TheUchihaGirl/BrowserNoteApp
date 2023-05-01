@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { UUID } from 'angular2-uuid';
 import { ActivatedRoute, Router } from '@angular/router';
-import { cardData } from 'src/model/cardData';
+import { CardData } from 'src/model/CardData';
 @Component({
   selector: 'app-createnote',
   templateUrl: './createnote.component.html',
@@ -31,7 +31,7 @@ export class CreatenoteComponent implements OnInit{
     }else{
       //In modification mode
       this.Id = id;
-      let noteDetails: cardData[] = this.storageService.get().filter((noteElem)=>{
+      let noteDetails: CardData[] = this.storageService.get().filter((noteElem)=>{
         return noteElem.id == this.Id;
       });
       this.Title = noteDetails[0].title;
@@ -54,7 +54,7 @@ export class CreatenoteComponent implements OnInit{
         datalist = datalist.filter((dataElem)=> dataElem.id!=guid);
     }
 
-    let noteDetails : cardData = {
+    let noteDetails : CardData = {
       id: guid,
       title: this.Title,
       subtitle: this.Subtitle,

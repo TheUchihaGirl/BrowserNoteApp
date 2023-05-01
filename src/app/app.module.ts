@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -14,10 +15,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import { CreatenoteComponent } from './createnote/createnote.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
 import { ModifynoteComponent } from './modifynote/modifynote.component';
+import { CreateCategoryDialogComponent } from './create-category-dialog/create-category-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,14 +30,18 @@ import { ModifynoteComponent } from './modifynote/modifynote.component';
     CreatenoteComponent,
     DashboardComponent,
     CardComponent,
-    ModifynoteComponent
-  ],
+    ModifynoteComponent,
+    CreateCategoryDialogComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     BrowserAnimationsModule,
+    NgxMatColorPickerModule,
     FormsModule,
-
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatButtonModule,
@@ -40,9 +49,13 @@ import { ModifynoteComponent } from './modifynote/modifynote.component';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { CardData } from 'src/model/CardData';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
-  private key = "datalist";
+
+export class CategoryService {
+  private key = "categoryData"
   constructor() { }
+
   set(data: any): void {
     try {
       localStorage.setItem(this.key, JSON.stringify(data));
@@ -15,7 +16,7 @@ export class StorageService {
     }
   }
 
-  get():CardData[] {
+  get(){
     try {
       let dataString : string | null = localStorage.getItem(this.key);
       if(dataString == null){
@@ -28,10 +29,5 @@ export class StorageService {
       return [];
     }
   }
-
-  getById(id:string){
-
-  }
-
 
 }

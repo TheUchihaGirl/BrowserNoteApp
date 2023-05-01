@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { cardData } from 'src/model/cardData';
+import { CardData } from 'src/model/CardData';
 import { StorageService } from './storage.service';
 
 @Component({
