@@ -12,8 +12,24 @@
 </mat-toolbar>
 
 
+<!-- <mat-grid-list cols="3" rowHeight="2:1">
+    
+  <mat-grid-tile>First Grid</mat-grid-tile>
+  <mat-grid-tile>Second Grid</mat-grid-tile>
+  <mat-grid-tile>Third Grid</mat-grid-tile>
+  <mat-grid-tile>Fourth Grid</mat-grid-tile>
+  <mat-grid-tile>Fifth Grid</mat-grid-tile>
+  <mat-grid-tile>Sixth Frid</mat-grid-tile>
+  
+</mat-grid-list> -->
 
+<mat-grid-list cols="4" rowHeight="1.5:1" gutterSize="10">
+  <mat-grid-tile *ngFor="let card of CardData">
+    <app-card [card]="card" (deleteCard)="deleteCard($event)" style="width:100%"></app-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<!-- 
 <app-card *ngFor="let card of CardData" 
     [card]="card"
     (deleteCard)="deleteCard($event)">
-</app-card>
+</app-card> -->

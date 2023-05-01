@@ -23,6 +23,7 @@ import { CreateCategoryDialogComponent } from './create-category-dialog/create-c
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { CommonModule } from '@angular/common';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { CommonModule } from '@angular/common';
     MatListModule,
     MatSelectModule,
     MatDialogModule,
-
+    MatGridListModule
   ],
   providers: [
     { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
