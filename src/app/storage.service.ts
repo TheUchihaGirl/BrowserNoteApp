@@ -6,7 +6,9 @@ import { CardData } from 'src/model/CardData';
 })
 export class StorageService {
   private key = "CardIdList";
-  constructor() { }
+  constructor() { 
+    localStorage.setItem(this.key,JSON.stringify([]));
+  }
 
   Create(cardDetails: CardData): void {
     try {
@@ -59,6 +61,7 @@ export class StorageService {
       return cardDetailsList;
     }catch(e){
       console.log("Error getting card details from local storage", e);
+      return [];
     }
   }
 
@@ -68,6 +71,7 @@ export class StorageService {
       return JSON.parse(cardDetailsString);
     }catch(e){
       console.error('Error getting card details for id ',e);
+      return null;
     }
   }
 

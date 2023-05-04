@@ -15,9 +15,6 @@ export class AppComponent implements OnInit{
     this.storageService = storageService;
   }
   ngOnInit(): void {
-    if(this.storageService.get() == null || this.storageService.get() == undefined){
-      this.storageService.set([]);
-    }
     
   }
 

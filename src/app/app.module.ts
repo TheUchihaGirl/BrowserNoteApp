@@ -18,7 +18,6 @@ import { CreatenoteComponent } from './createnote/createnote.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
-import { ModifynoteComponent } from './modifynote/modifynote.component';
 import { CreateCategoryDialogComponent } from './create-category-dialog/create-category-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
@@ -31,7 +30,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     CreatenoteComponent,
     DashboardComponent,
     CardComponent,
-    ModifynoteComponent,
     CreateCategoryDialogComponent
     ],
   imports: [
