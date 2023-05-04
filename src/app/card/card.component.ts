@@ -39,11 +39,7 @@ export class CardComponent implements OnInit{
   }
 
   delete(){
-    let datalist = this.storageService.get();
-    datalist = datalist.filter((elem)=>{
-      return elem.id != this.id;
-    });
-    this.storageService.set(datalist);
+    this.storageService.Delete(this.id);
     this.deleteCard.emit(this.id);
   }
 

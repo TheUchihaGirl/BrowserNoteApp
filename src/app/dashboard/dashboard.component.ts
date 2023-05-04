@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.CardData = this.storageService.get();
+    this.CardData = this.storageService.getAll();
   }
 
   deleteCard(deletedNoteId: string) {

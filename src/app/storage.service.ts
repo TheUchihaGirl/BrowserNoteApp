@@ -33,6 +33,17 @@ export class StorageService {
     }
   }
 
+  Delete(id : string):void{
+    try{
+      let cardIdList : string[] = this.getCardIdList();
+      localStorage.removeItem(id);
+      cardIdList = cardIdList.filter((cardId)=> id!=cardId);
+      this.saveCardIdList(cardIdList);
+    }catch(e){
+      console.log('Error deleting card from local storage');
+    }
+  }
+
   getAll():CardData[]{
     try{
       let cardIdList:string[] = this.getCardIdList();
