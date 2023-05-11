@@ -2,10 +2,14 @@
   <mat-toolbar-row>
     <span>Welcome to Browser Note App</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button aria-label="Example icon button with a open in new tab icon" (click)="createNote()">
+    <button
+     mat-icon-button 
+     matTooltip="Create a Note"
+     aria-label="Example icon button with a open in new tab icon" 
+     (click)="createNote()">
       <mat-icon>note_add</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Example icon button with a open in new tab icon" (click)="openCreateCategoryDialog()">
+    <button matTooltip="Create a Note" mat-icon-button aria-label="Example icon button with a open in new tab icon" (click)="openCreateCategoryDialog()">
       <mat-icon>storage</mat-icon>
     </button>
   </mat-toolbar-row>
